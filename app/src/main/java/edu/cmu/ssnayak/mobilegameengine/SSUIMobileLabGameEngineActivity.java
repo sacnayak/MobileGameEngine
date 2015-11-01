@@ -10,8 +10,7 @@ public class SSUIMobileLabGameEngineActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         GameEngineBase gb = new GameEngineBase(R.raw.basic_fsmspec, this);
-        
-        
+
         setContentView(gb.finalInit());
         
         

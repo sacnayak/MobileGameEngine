@@ -1,4 +1,4 @@
- <?xml version="1.0"?>
+<?xml version="1.0"?>
 <ssuigamefsmspec>
 	<character name="test1" initbm="icon_black" initx="20" inity="20" initw="50" inith="50">
 		<fsm>
@@ -84,7 +84,7 @@
 		</fsm>
 	</character>
 	
-	<character name="bounce" initbm="crosshair" initx="10" inity="150" initw="50" inith="50">
+	<character name="bounce" initbm="crosshair" initx="20" inity="150" initw="50" inith="50">
 		<fsm>
 			<state name="state0">
 				<transition targetState="state1">

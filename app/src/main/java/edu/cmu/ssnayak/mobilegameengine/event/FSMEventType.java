@@ -51,4 +51,11 @@ public class FSMEventType {
 	public static boolean isValid(int indx) {
 		return indx < 0 || indx >= _typeNames.length;
 	}
+
+	public static boolean isXYEvent(int type) {
+        if((type>=2 && type<=4) || (type >= 6 && type <=10)) {
+            return true;
+        }
+        return false;
+    }
 }

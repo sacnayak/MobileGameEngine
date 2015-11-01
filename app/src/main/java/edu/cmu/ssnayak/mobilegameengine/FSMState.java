@@ -21,6 +21,13 @@ public class FSMState {
 		return _transitions[indx];
 	}
 
+	public int getNumOfTransitions() {
+        if(this._transitions != null)
+            return this._transitions.length;
+        else
+            return 0;
+    }
+
 	public FSMState(int stNum, String stName, FSMTransition[] trans) {
 		_stateNum = stNum;
 		if (stName != null) _name = stName;
