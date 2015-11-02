@@ -52,6 +52,11 @@ public class FSMEventType {
 		return indx < 0 || indx >= _typeNames.length;
 	}
 
+	/**
+	 * Utility method to check if a given event is XY or not
+	 * @param type
+	 * @return
+	 */
 	public static boolean isXYEvent(int type) {
         if((type>=2 && type<=4) || (type >= 6 && type <=10)) {
             return true;
