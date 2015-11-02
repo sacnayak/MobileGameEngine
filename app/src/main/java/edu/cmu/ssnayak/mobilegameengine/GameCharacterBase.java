@@ -19,12 +19,26 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.util.Log;
 
+/**
+ * Child class of GameCharacterPreBase that implements the FSM
+ * for a given character. It describes how the character would
+ * consume the events along with its transitions and drawings
+ */
 public class GameCharacterBase extends GameCharacterPreBase {
 
+    /**
+     * Method to check if this character would consume a given event.
+     * If an event is consumes, the corresponding transitions and actions
+     * also are performed. Else it returns without taking any
+     * action.
+     * @param event the event that can be consumed
+     * @return
+     */
 	@Override
 	public boolean deliverEvent(FSMEvent event) {
         // get state - loop through transitions - match event - if match - make FSM Transition
         // -  return true
+
         FSMState currState = this._FSMStateTable[this.getCurrentState()];
 
         for(int i=0; i<currState.getNumOfTransitions() ;i++) {
@@ -39,6 +53,12 @@ public class GameCharacterBase extends GameCharacterPreBase {
 		return false;
 	}
 
+    /**
+     * For a given event-match and transition, this method
+     * makes the corresponding actions in the transition in order
+     * @param transition the transition that is to be taken
+     * @param evt the event that matched this transition
+     */
 	@Override
 	protected void makeFSMTransition(FSMTransition transition, FSMEvent evt) {
 		//take actions of transitions - catch action - do action
@@ -119,6 +139,10 @@ public class GameCharacterBase extends GameCharacterPreBase {
 
 	}
 
+    /**
+     * Method to draw this character on a canvas
+     * @param canv the canvas on which the character should be drawn
+     */
 	@Override
 	public void draw(Canvas canv) {
         //draw current game character
@@ -126,6 +150,17 @@ public class GameCharacterBase extends GameCharacterPreBase {
 	}
 
 
+    /**
+     * Constructor for GameCharacterBase
+     * @param owner
+     * @param index
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param states
+     * @param img
+     */
 	public GameCharacterBase(
 			GameEnginePreBase owner,
 			int index,
