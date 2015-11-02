@@ -26,7 +26,7 @@
 				<transition targetState="start">
 					<eventMatch type="BUTTON_PRESSED" buttonName="button 1"/>
 					<action type="RUN_ANIM" movingCharacterName="test1"
-							targetCharacterName="drag1" 
+							targetCharacterName="drag1"
 							endMessage="ChangeToHeart" 
 							passOverMessage="passover"
 							duration="5000"/>
@@ -73,7 +73,7 @@
 		</fsm>
 	</character>
 	
-	<character name="pass1" initbm="icon" initx ="200" inity="20" initw="50" inith="50">
+	<character name="pass1" initbm="icon" initx ="300" inity="20" initw="50" inith="50">
 		<fsm>
 			<state name="start">
 				<transition targetState="start">

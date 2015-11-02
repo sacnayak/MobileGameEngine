@@ -11,14 +11,9 @@ import edu.cmu.ssnayak.mobilegameengine.action.MoveIncAction;
 import edu.cmu.ssnayak.mobilegameengine.action.MoveToAction;
 import edu.cmu.ssnayak.mobilegameengine.action.RunAnimAction;
 import edu.cmu.ssnayak.mobilegameengine.action.SendMessageAction;
-import edu.cmu.ssnayak.mobilegameengine.event.AnimEndEvent;
-import edu.cmu.ssnayak.mobilegameengine.event.AnimMoveEvent;
-import edu.cmu.ssnayak.mobilegameengine.event.AnimStartEvent;
-import edu.cmu.ssnayak.mobilegameengine.event.DragEndEvent;
-import edu.cmu.ssnayak.mobilegameengine.event.DragMoveEvent;
 import edu.cmu.ssnayak.mobilegameengine.event.FSMEvent;
 import edu.cmu.ssnayak.mobilegameengine.event.MessageEvent;
-import edu.cmu.ssnayak.mobilegameengine.event.TouchPressEvent;
+import edu.cmu.ssnayak.mobilegameengine.event.XYEvent;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -81,20 +76,9 @@ public class GameCharacterBase extends GameCharacterPreBase {
 
                 case FSMActionType.FOLLOW_EVENT_POSITION:
                     FollowEventAction followEventAction = (FollowEventAction) action;
-                    if(evt instanceof AnimStartEvent) {
-                        AnimStartEvent animEvent = (AnimStartEvent) evt;
-                        this.setX(animEvent.getX());
-                        this.setY(animEvent.getY());
-                    } else if(evt instanceof AnimMoveEvent) {
-                        AnimMoveEvent animEvent = (AnimMoveEvent) evt;
-                        this.setX(animEvent.getX());
-                        this.setY(animEvent.getY());
-                    } else {
-                        AnimEndEvent animEvent = (AnimEndEvent) evt;
-                        this.setX(animEvent.getX());
-                        this.setY(animEvent.getY());
-                    }
-
+                    XYEvent animEvent = (XYEvent) evt;
+                    this.setX(animEvent.getX());
+                    this.setY(animEvent.getY());
                     //invalidate parent
                     owner.damageCharacter(this.getCharacterIndex());
                     break;
@@ -106,12 +90,11 @@ public class GameCharacterBase extends GameCharacterPreBase {
 
                 case FSMActionType.GET_DRAG_FOCUS:
                     GetDragFocusAction getDragFocusAction = (GetDragFocusAction) action;
-                    TouchPressEvent touchPressEvent = (TouchPressEvent) evt;
+                    XYEvent touchPressEvent = (XYEvent) evt;
                     owner.requestDragFocus(getCharacterIndex(), touchPressEvent.getX(), touchPressEvent.getY());
                     break;
                 case FSMActionType.DROP_DRAG_FOCUS:
                     DropDragFocusAction dropDragFocusAction = (DropDragFocusAction) action;
-                    DragEndEvent dragEndEvent = (DragEndEvent) evt;
                     owner.releaseDragFocus();
                     break;
 

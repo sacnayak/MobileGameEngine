@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.cmu.ssnayak.mobilegameengine.event.ButtonPressedEvent;
+import edu.cmu.ssnayak.mobilegameengine.event.DragEndEvent;
+import edu.cmu.ssnayak.mobilegameengine.event.DragMoveEvent;
 import edu.cmu.ssnayak.mobilegameengine.event.FSMEvent;
 import edu.cmu.ssnayak.mobilegameengine.event.FSMEventType;
 import edu.cmu.ssnayak.mobilegameengine.event.TouchMoveEvent;
@@ -62,8 +64,11 @@ public class GameEngineBase extends GameEnginePreBase {
 	
 	@Override
 	protected boolean dispatchDirect(int toChar, FSMEvent evt) {
-		GameCharacter gameChar = this._characters[toChar];
-        return gameChar.deliverEvent(evt);
+		if(isCharacter(toChar)) {
+            GameCharacter gameChar = this._characters[toChar];
+            return gameChar.deliverEvent(evt);
+        }
+        return false;
 	}
 	
 	@Override
@@ -93,7 +98,7 @@ public class GameEngineBase extends GameEnginePreBase {
 
         if(FSMEventType.isXYEvent(evt.getType())) {
             XYEvent xyEvent = (XYEvent) evt;
-            xyEvent.offset(this._grabPointX, this._grabPointY);
+            //xyEvent.offset(this._grabPointX, this._grabPointY);
             GameCharacter gameCharacter = this._characters[this._dragFocus];
             if(gameCharacter.deliverEvent(xyEvent)) {
                 return true;
@@ -117,7 +122,6 @@ public class GameEngineBase extends GameEnginePreBase {
 	protected void buttonHit(int buttonNum) {
 		//Get Button Name from Id - dispatch appropriate event to all characters
         ButtonPressedEvent buttonPressedEvent = new ButtonPressedEvent(buttonNum);
-        //FIXME deliver to all or try deliver to all?
         dispatchToAll(buttonPressedEvent);
 	}
 	
@@ -133,20 +137,35 @@ public class GameEngineBase extends GameEnginePreBase {
 		float x = evt.getX();
 		float y = evt.getY();
 
+        boolean actionDownDispatch = false;
+        boolean actionMoveDispatch = false;
+        boolean actionUpDispatch = false;
+
 		if (evt.getAction() == MotionEvent.ACTION_DOWN) {
             TouchPressEvent touchPressEvent = new TouchPressEvent(x, y);
-            dispatchPositionally(new RectF(x, y, x + 1, y + 1), touchPressEvent);
+            actionDownDispatch = dispatchPositionally(new RectF(x, y, x + 1, y + 1), touchPressEvent);
+
 		} else if (evt.getAction() == MotionEvent.ACTION_MOVE) {
-            TouchMoveEvent touchMoveEvent = new TouchMoveEvent(x, y);
-            dispatchPositionally(new RectF(x, y, x + 1, y + 1), touchMoveEvent);
+
+            if(this._dragFocus==-1) {
+                TouchMoveEvent touchMoveEvent = new TouchMoveEvent(x, y);
+                actionMoveDispatch = dispatchPositionally(new RectF(x, y, x + 1, y + 1), touchMoveEvent);
+            } else {
+                DragMoveEvent dragMoveEvent = new DragMoveEvent(x, y);
+                actionMoveDispatch = dispatchDragFocus(dragMoveEvent);
+            }
 		} else if (evt.getAction() == MotionEvent.ACTION_UP) {
-            TouchReleaseEvent touchReleaseEvent = new TouchReleaseEvent(x, y);
-            dispatchPositionally(new RectF(x, y, x + 1, y + 1), touchReleaseEvent);
+            if(this._dragFocus==-1) {
+                TouchReleaseEvent touchReleaseEvent = new TouchReleaseEvent(x, y);
+                actionUpDispatch = dispatchPositionally(new RectF(x, y, x + 1, y + 1), touchReleaseEvent);
+            } else {
+                DragEndEvent dragEndEvent = new DragEndEvent(x, y);
+                actionUpDispatch = dispatchDragFocus(dragEndEvent);
+            }
 		} else {
 			// not an event we understand...
 			return false;
 		}
-		
-		return false;
+        return (actionDownDispatch || actionMoveDispatch || actionUpDispatch);
 	}
 }
