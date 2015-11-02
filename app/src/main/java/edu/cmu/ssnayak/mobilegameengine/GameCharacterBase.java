@@ -17,6 +17,7 @@ import edu.cmu.ssnayak.mobilegameengine.event.XYEvent;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.util.Log;
 
 public class GameCharacterBase extends GameCharacterPreBase {
 
@@ -91,7 +92,7 @@ public class GameCharacterBase extends GameCharacterPreBase {
                 case FSMActionType.GET_DRAG_FOCUS:
                     GetDragFocusAction getDragFocusAction = (GetDragFocusAction) action;
                     XYEvent touchPressEvent = (XYEvent) evt;
-                    owner.requestDragFocus(getCharacterIndex(), touchPressEvent.getX(), touchPressEvent.getY());
+                    owner.requestDragFocus(getCharacterIndex(), touchPressEvent.getX()-getX(), touchPressEvent.getY()-getY());
                     break;
                 case FSMActionType.DROP_DRAG_FOCUS:
                     DropDragFocusAction dropDragFocusAction = (DropDragFocusAction) action;
@@ -100,14 +101,12 @@ public class GameCharacterBase extends GameCharacterPreBase {
 
                 case FSMActionType.SEND_MESSAGE:
                     SendMessageAction sendMessageAction = (SendMessageAction) action;
-                    MessageEvent sendMessageEvent = (MessageEvent) evt;
-                    owner.sendMessage(sendMessageAction.getTargetCharacter(), sendMessageEvent.getMessage());
+                    owner.sendMessage(sendMessageAction.getTargetCharacter(), sendMessageAction.getMessage());
                     break;
 
                 case FSMActionType.DEBUG_MESSAGE:
                     DebugAction debugAction = (DebugAction) action;
-                    MessageEvent debugMessageEvent = (MessageEvent) evt;
-                    owner.sendMessage(getCharacterIndex(), debugMessageEvent.getMessage());
+                    Log.d("ssui", debugAction.getMessage());
                     break;
 
                 default: //No action event

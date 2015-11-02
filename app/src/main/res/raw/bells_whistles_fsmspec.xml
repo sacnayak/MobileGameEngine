@@ -2,104 +2,109 @@
 <ssuigamefsmspec>
     <character name="zombie1" initbm="icon_black" inith="50" initw="50" initx="20" inity="270">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch buttonName="Start Game" type="BUTTON_PRESSED" />
                     <action duration="25000" endMessage="Kill" movingCharacterName="zombie1"
                         passOverMessage="revive" targetCharacterName="you" type="RUN_ANIM" />
+                    <action type="DEBUG_MESSAGE" message="Zombie1 activated" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START" />
                     <action bitmap="icon_red" type="CHANGE_IMAGE" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE" />
                     <action type="FOLLOW_EVENT_POSITION" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END" />
                     <action type="FOLLOW_EVENT_POSITION" />
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
             </state>
+            <state name="killed"></state>
         </fsm>
     </character>
     <character name="zombie2" initbm="icon_black" inith="50" initw="50" initx="100" inity="200">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch buttonName="Start Game" type="BUTTON_PRESSED" />
                     <action duration="10000" endMessage="Kill" movingCharacterName="zombie2"
                         passOverMessage="revive" targetCharacterName="you" type="RUN_ANIM" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START" />
                     <action bitmap="icon_red" type="CHANGE_IMAGE" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE" />
                     <action type="FOLLOW_EVENT_POSITION" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END" />
                     <action type="FOLLOW_EVENT_POSITION" />
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
             </state>
+            <state name="killed"></state>
         </fsm>
     </character>
     <character name="zombie3" initbm="icon_black" inith="50" initw="50" initx="180" inity="20">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch buttonName="Start Game" type="BUTTON_PRESSED" />
                     <action duration="15000" endMessage="Kill" movingCharacterName="zombie3"
                         passOverMessage="revive" targetCharacterName="you" type="RUN_ANIM" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START" />
                     <action bitmap="icon_red" type="CHANGE_IMAGE" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE" />
                     <action type="FOLLOW_EVENT_POSITION" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END" />
                     <action type="FOLLOW_EVENT_POSITION" />
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
             </state>
+            <state name="killed"></state>
         </fsm>
     </character>
     <character name="zombie4" initbm="icon_black" inith="50" initw="50" initx="260" inity="100">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch buttonName="Start Game" type="BUTTON_PRESSED" />
                     <action duration="7000" endMessage="Kill" movingCharacterName="zombie4"
                         passOverMessage="revive" targetCharacterName="you" type="RUN_ANIM" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START" />
                     <action bitmap="icon_red" type="CHANGE_IMAGE" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE" />
                     <action type="FOLLOW_EVENT_POSITION" />
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END" />
                     <action type="FOLLOW_EVENT_POSITION" />
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
             </state>
+            <state name="killed"></state>
         </fsm>
     </character>
     <character name="zombie5" initbm="icon_black" initx="340" inity="20" initw="50" inith="50">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch type="BUTTON_PRESSED" buttonName="Start Game"/>
                     <action type="RUN_ANIM" movingCharacterName="zombie5"
                         targetCharacterName="you"
@@ -107,26 +112,27 @@
                         passOverMessage="revive"
                         duration="4000"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START"/>
                     <action type="CHANGE_IMAGE" bitmap="icon_red"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
             </state>
+            <state name="killed"></state>
         </fsm>
     </character>
     <character name="zombie6" initbm="icon_black" initx="420" inity="50" initw="50" inith="50">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch type="BUTTON_PRESSED" buttonName="Start Game"/>
                     <action type="RUN_ANIM" movingCharacterName="zombie6"
                         targetCharacterName="you"
@@ -134,26 +140,27 @@
                         passOverMessage="revive"
                         duration="30000"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START"/>
                     <action type="CHANGE_IMAGE" bitmap="icon_red"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
             </state>
+            <state name="killed"></state>
         </fsm>
     </character>
     <character name="zombie7" initbm="icon_black" initx="500" inity="50" initw="50" inith="50">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch type="BUTTON_PRESSED" buttonName="Start Game"/>
                     <action type="RUN_ANIM" movingCharacterName="zombie7"
                         targetCharacterName="you"
@@ -161,26 +168,27 @@
                         passOverMessage="revive"
                         duration="5000"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START"/>
                     <action type="CHANGE_IMAGE" bitmap="icon_red"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
             </state>
+            <state name="killed"></state>
         </fsm>
     </character>
     <character name="zombie8" initbm="icon_black" initx="580" inity="320" initw="50" inith="50">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch type="BUTTON_PRESSED" buttonName="Start Game"/>
                     <action type="RUN_ANIM" movingCharacterName="zombie8"
                         targetCharacterName="you"
@@ -188,26 +196,27 @@
                         passOverMessage="revive"
                         duration="10000"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START"/>
                     <action type="CHANGE_IMAGE" bitmap="icon_red"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
+                <state name="killed"></state>
             </state>
         </fsm>
     </character>
     <character name="zombie9" initbm="icon_black" initx="660" inity="240" initw="50" inith="50">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch type="BUTTON_PRESSED" buttonName="Start Game"/>
                     <action type="RUN_ANIM" movingCharacterName="zombie9"
                         targetCharacterName="you"
@@ -215,26 +224,27 @@
                         passOverMessage="revive"
                         duration="25000"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START"/>
                     <action type="CHANGE_IMAGE" bitmap="icon_red"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
+                <state name="killed"></state>
             </state>
         </fsm>
     </character>
     <character name="zombie10" initbm="icon_black" initx="200" inity="240" initw="50" inith="50">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch type="BUTTON_PRESSED" buttonName="Start Game"/>
                     <action type="RUN_ANIM" movingCharacterName="zombie10"
                         targetCharacterName="you"
@@ -242,26 +252,27 @@
                         passOverMessage="revive"
                         duration="10000"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START"/>
                     <action type="CHANGE_IMAGE" bitmap="icon_red"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
+                <state name="killed"></state>
             </state>
         </fsm>
     </character>
     <character name="zombie11" initbm="icon_black" initx="600" inity="120" initw="50" inith="50">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch type="BUTTON_PRESSED" buttonName="Start Game"/>
                     <action type="RUN_ANIM" movingCharacterName="zombie11"
                         targetCharacterName="you"
@@ -269,26 +280,27 @@
                         passOverMessage="revive"
                         duration="3000"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START"/>
                     <action type="CHANGE_IMAGE" bitmap="icon_red"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
+                <state name="killed"></state>
             </state>
         </fsm>
     </character>
     <character name="zombie12" initbm="icon_black" initx="70" inity="160" initw="50" inith="50">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch type="BUTTON_PRESSED" buttonName="Start Game"/>
                     <action type="RUN_ANIM" movingCharacterName="zombie12"
                         targetCharacterName="you"
@@ -296,26 +308,27 @@
                         passOverMessage="revive"
                         duration="6000"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START"/>
                     <action type="CHANGE_IMAGE" bitmap="icon_red"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
             </state>
+            <state name="killed"></state>
         </fsm>
     </character>
     <character name="zombie13" initbm="icon_black" initx="100" inity="240" initw="50" inith="50">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="alive">
                     <eventMatch type="BUTTON_PRESSED" buttonName="Start Game"/>
                     <action type="RUN_ANIM" movingCharacterName="zombie13"
                         targetCharacterName="you"
@@ -323,30 +336,34 @@
                         passOverMessage="revive"
                         duration="5000"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_START"/>
                     <action type="CHANGE_IMAGE" bitmap="icon_red"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="alive">
                     <eventMatch type="ANIM_MOVE"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                 </transition>
-                <transition targetState="start">
+                <transition targetState="killed">
                     <eventMatch type="ANIM_END"/>
                     <action type="FOLLOW_EVENT_POSITION"/>
                     <action type="CHANGE_IMAGE" bitmap="icon"/>
                 </transition>
             </state>
+            <state name="killed"></state>
         </fsm>
     </character>
     <character name="you" initbm="icon" inith="50" initw="50" initx="345" inity="700">
         <fsm>
-            <state name="start">
-                <transition targetState="start">
+            <state name="alive">
+                <transition targetState="zombie">
                     <eventMatch message="Kill" type="MESSAGE_ARRIVED" />
                     <action bitmap="icon_red" type="CHANGE_IMAGE" />
+                    <action type="SEND_MESSAGE" targetCharacterName="tombraidergun" message="dead" />
+                    <action type="DEBUG_MESSAGE" message="disablegun" />
                 </transition>
             </state>
+            <state name="zombie"></state>
         </fsm>
     </character>
     <character name="tombraidergun" initbm="crosshair" initx="20" inity="700" initw="50" inith="50">
@@ -367,7 +384,12 @@
                 <transition targetState="start">
                     <eventMatch type="MESSAGE_ARRIVED" message="revive"/>
                 </transition>
+                <transition targetState="disabled">
+                    <eventMatch type="MESSAGE_ARRIVED" message="dead"/>
+                    <action type="DEBUG_MESSAGE" message="disabled" />
+                </transition>
             </state>
+            <state name="disabled"></state>
         </fsm>
     </character>
 

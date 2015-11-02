@@ -97,8 +97,8 @@ public class GameEngineBase extends GameEnginePreBase {
 		if(this._dragFocus == -1) {return false;}
 
         if(FSMEventType.isXYEvent(evt.getType())) {
-            XYEvent xyEvent = (XYEvent) evt;
-            //xyEvent.offset(this._grabPointX, this._grabPointY);
+            XYEvent xyEvent = (XYEvent) evt.copy();
+            xyEvent.offset(-(this._grabPointX - getX()), -(this._grabPointY - getY()));
             GameCharacter gameCharacter = this._characters[this._dragFocus];
             if(gameCharacter.deliverEvent(xyEvent)) {
                 return true;

@@ -55,15 +55,18 @@
 						<eventMatch type="TOUCH_PRESS"/>
 						<action type="GET_DRAG_FOCUS" />
 						<action type="CHANGE_IMAGE" bitmap="icon_red" />
+                        <action type="DEBUG_MESSAGE" message="DragFocusTest" />
 				</transition>
 				<transition targetState="start">
 						<eventMatch type="DRAG_MOVE"/>
 						<action type="FOLLOW_EVENT_POSITION" />
+                        <action type="DEBUG_MESSAGE" message="FollowEventTest" />
 				</transition>
 				<transition targetState="start">
 						<eventMatch type="DRAG_END"/>
 						<action type="DROP_DRAG_FOCUS" />
 						<action type="CHANGE_IMAGE" bitmap="icon" />
+						<action type="DEBUG_MESSAGE" message="DragEndTest" />
 				</transition>
 				<transition targetState="start">
 						<eventMatch type="MESSAGE_ARRIVED" message="ChangeToHeart"/>
@@ -96,12 +99,14 @@
 				<transition targetState="state2">
 					<eventMatch type="BUTTON_PRESSED" buttonName="Shift"/>
 					<action type="MOVE_INC" targetOffsetX="20" targetOffsetY="30"/>
-				</transition>
+                    <action type="DEBUG_MESSAGE" message="MoveIncTest" />
+                </transition>
 			</state>
 			<state name="state2">
 				<transition targetState="state0">
 					<eventMatch type="BUTTON_PRESSED" buttonName="Shift"/>
 					<action type="MOVE_TO" targetAbsoluteX="10" targetAbsoluteY="150"/>
+                    <action type="DEBUG_MESSAGE" message="MoveToTest" />
 				</transition>"
 			</state>
 		</fsm>
